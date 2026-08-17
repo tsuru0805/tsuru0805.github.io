@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!-- 海报式整页缩放:固定 880 版心,手机整体缩小显示(晚晚 0817 拍:真机=桌面版式,不重排) -->
+<meta name="viewport" content="width=880">
+<title>TillDusk — open source</title>
+<meta name="description" content="projects, notes and experiments from TillDusk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ▓ 顶栏 -->
+<header class="topbar">
+  <a class="topbar-logo" href="#">TillDusk <span class="logo-x">×</span></a>
+  <nav class="topbar-nav">
+    <a href="#" class="active">HOME</a>
+    <a href="https://github.com/tsuru0805" target="_blank" rel="noopener">GITHUB</a>
+    <a href="#" data-jump="gist">GIST</a>
+  </nav>
+  <span class="topbar-heart" aria-hidden="true">
+    <svg viewBox="0 0 32 32"><path d="M16 28C8 21 3 16 3 10.5 3 6.9 5.9 4 9.5 4c2.6 0 5 1.5 6.5 4C17.5 5.5 19.9 4 22.5 4 26.1 4 29 6.9 29 10.5 29 16 24 21 16 28z" fill="var(--pink)" stroke="#000" stroke-width="1.5"/><path d="M12 12l3 3M15 12l-3 3M19 11l2.5 2.5M21.5 11L19 13.5" stroke="#000" stroke-width="1.4" stroke-linecap="round"/></svg>
+  </span>
+</header>
+
+<!-- ▓ hero -->
+<section class="hero">
+  <div class="hero-copy">
+    <h1 class="hero-title"><img src="assets/logo_hero.webp" alt="TillDusk"></h1>
+    <div class="hero-banner">open source</div>
+    <p class="hero-sub">projects, notes and<br>experiments from TillDusk.</p>
+    <div class="sticky sticky-left" aria-hidden="true">code.<br>caffeine.<br>chaos.<br>cute girls. <span class="tiny-heart">♡</span></div>
+  </div>
+  <figure class="hero-art" id="art">
+    <img src="assets/hero.webp?v=2" alt="TillDusk 主视觉：粉发小恶魔与贴纸笔电"
+         onerror="this.closest('.hero-art').classList.add('missing')">
+    <figcaption class="art-placeholder" aria-hidden="true">Elias 素材位<br><code>assets/hero.png</code></figcaption>
+    <div class="sticky sticky-right" aria-hidden="true">works on<br>my machine<br>(mostly)</div>
+  </figure>
+  <!-- 喷漆占位：素材 C 到位后换 PNG -->
+  <span class="splat splat-1" aria-hidden="true"></span>
+  <span class="splat splat-2" aria-hidden="true"></span>
+</section>
+
+<!-- ▓ 过滤条 -->
+<div class="filterbar">
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-filter="all" role="tab">ALL</button>
+    <button class="tab" data-filter="projects" role="tab">PROJECTS</button>
+    <button class="tab" data-filter="notes" role="tab">NOTES</button>
+  </div>
+  <label class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="search-input" type="search" placeholder="search..." autocomplete="off">
+    <span class="search-arrow" aria-hidden="true">→</span>
+  </label>
+</div>
+
+<!-- ▓ 卡片列表（main.js 从 data.js 渲染） -->
+<main id="cards" class="cards"></main>
+<!-- 锚点用于跳转:#art=主视觉 #cards=列表 #foot=页脚 -->
+
+<!-- ▓ 页脚 -->
+<footer class="footer" id="foot">
+  <div class="footer-left">
+    <div class="still-building">still<br>building...<span class="scribble-star" aria-hidden="true">✦</span></div>
+    <img class="footer-trio" src="assets/footer_trio.webp" alt="" aria-hidden="true">
+  </div>
+  <div class="construction">
+    <div class="construction-label">施工记录</div>
+    <div id="pixel-grid" class="pixel-grid" aria-hidden="true"></div>
+    <div class="construction-note">slow but steady.<br>(and full of bugs)</div>
+  </div>
+  <div class="footer-right">
+    <div class="sticky sticky-foot" aria-hidden="true">made with<br>bugs, caffeine &amp;<br>unreasonable<br>persistence. <span class="tiny-heart">♥</span></div>
+    <!-- 社交素材块(Elias F sheet):热区压在三个圆图标上 -->
+    <div class="social-plate">
+      <img src="assets/social_plate.webp" alt="TillDusk 社交入口">
+      <a class="hot hot-x" href="#" target="_blank" rel="noopener" aria-label="X / Twitter"></a>
+      <a class="hot hot-gh" href="https://github.com/tsuru0805" target="_blank" rel="noopener" aria-label="GitHub"></a>
+      <button class="hot hot-mail" type="button" aria-label="email"></button>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js?v=4"></script>
+<script src="main.js?v=4"></script>
+</body>
+</html>

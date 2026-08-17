@@ -1,0 +1,463 @@
+/* ═══ 工单_189 开源合集门户页 ═══
+   粉黑朋克 zine 剪贴风（参考图=晚晚 0817 甩图）。
+   固定亮色纸底外观，不做暗色分支——纸就是纸。
+   撕纸/胶带/格纹全 CSS+SVG；喷漆与贴纸位等 Elias 素材（B/C）到位后替换。 */
+
+:root {
+  --pink: #ff2d78;
+  --pink-deep: #e0175f;
+  --pink-wash: #f9b8cf;
+  --ink: #141414;
+  --paper: #f3eee3;
+  --paper-2: #eae4d6;
+  --paper-card: #f7f3ea;
+  --font-marker: 'Permanent Marker', 'Comic Sans MS', cursive;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-script: 'Caveat', cursive;
+  --font-body: 'Space Mono', -apple-system, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', monospace, sans-serif;
+  --shadow-card: 3px 4px 0 rgba(20, 20, 20, 0.18);
+  --w: 860px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: url('assets/bg_paper.webp') repeat top left / 700px auto var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── 顶栏 ─── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 26px;
+  border-bottom: 3px solid var(--pink);
+}
+.topbar-logo {
+  font-family: var(--font-marker);
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-right: auto;
+}
+.logo-x { color: var(--pink); }
+.topbar-nav { display: flex; gap: 22px; }
+.topbar-nav a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  padding: 4px 2px;
+}
+.topbar-nav a.active {
+  color: var(--pink);
+  border-bottom: 3px solid var(--pink);
+}
+.topbar-nav a:hover { color: var(--pink-wash); }
+.topbar-heart { width: 26px; height: 26px; }
+.topbar-heart svg { width: 100%; height: 100%; display: block; }
+
+/* ─── hero ─── */
+.hero {
+  position: relative;
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 56px 24px 30px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+  align-items: center;
+}
+.hero-title { margin: 0 0 4px -10px; }
+.hero-title img {
+  display: block;
+  width: min(100%, 470px);
+  height: auto;
+  filter: drop-shadow(2px 3px 0 rgba(20, 20, 20, 0.12));
+}
+.hero-banner {
+  display: inline-block;
+  margin: 10px 0 16px;
+  background: url('assets/paint_black_brush.webp') center / 100% 100% no-repeat;
+  color: #fff;
+  font-family: var(--font-marker);
+  font-size: 24px;
+  letter-spacing: 6px;
+  padding: 16px 42px 20px;
+  transform: rotate(-1.4deg);
+}
+.hero-sub {
+  font-size: 14px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+}
+
+.hero-art { position: relative; text-align: center; }
+.hero-art img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-art .art-placeholder { display: none; }
+.hero-art.missing img { display: none; }
+.hero-art.missing .art-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  aspect-ratio: 3 / 4;
+  max-height: 380px;
+  margin: 0 auto;
+  width: min(100%, 290px);
+  border: 3px dashed rgba(20, 20, 20, 0.35);
+  color: rgba(20, 20, 20, 0.55);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 1px;
+  background: repeating-linear-gradient(-45deg,
+    transparent 0 14px, rgba(255, 45, 120, 0.07) 14px 28px);
+}
+
+/* ─── 便签（Elias F-03 便签图当底） ─── */
+.sticky {
+  position: absolute;
+  font-family: var(--font-script);
+  font-size: 19px;
+  line-height: 1.25;
+  width: max-content;
+  filter: drop-shadow(3px 4px 3px rgba(20, 20, 20, 0.18));
+}
+.sticky-left {
+  left: 18px;
+  bottom: -128px;
+  transform: rotate(-4deg);
+  z-index: 2;
+  background: url('assets/memo_cream.webp') center / 100% 100% no-repeat;
+  padding: 30px 34px 34px;
+}
+.sticky-right {
+  right: -6px;
+  bottom: 8px;
+  transform: rotate(3deg);
+  background: url('assets/memo_pink.webp') center / 100% 100% no-repeat;
+  padding: 26px 34px 30px;
+}
+.sticky-foot {
+  position: static;
+  transform: rotate(-2deg);
+  background: url('assets/memo_fold.webp') center / 100% 100% no-repeat;
+  padding: 30px 40px 34px;
+}
+.tiny-heart { color: var(--pink); }
+
+/* ─── 喷漆占位（素材 C 到位换 PNG） ─── */
+.splat {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.splat-1 {
+  right: 4%;
+  top: 18px;
+  width: 14px; height: 14px;
+  background: var(--pink);
+  box-shadow: 18px 26px 0 -4px var(--pink), -12px 40px 0 -6px var(--pink-deep),
+    30px 60px 0 -5px var(--pink), 6px 84px 0 -6.4px var(--ink);
+}
+.splat-2 {
+  left: 2%;
+  top: 40%;
+  width: 10px; height: 10px;
+  background: var(--ink);
+  box-shadow: 14px 18px 0 -3px var(--ink), 4px 38px 0 -3.5px var(--pink);
+}
+
+/* ─── 过滤条 ─── */
+.filterbar {
+  max-width: var(--w);
+  margin: 130px auto 26px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.tabs { display: flex; gap: 6px; }
+.tab {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 9px 20px;
+  background: transparent;
+  color: var(--ink);
+  border: none;
+  cursor: pointer;
+}
+.tab.active {
+  background: var(--ink);
+  color: #fff;
+  clip-path: polygon(3% 10%, 97% 0%, 100% 88%, 50% 100%, 0% 92%);
+  position: relative;
+}
+.tab:hover:not(.active) { color: var(--pink-deep); text-decoration: underline wavy; }
+.search {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper-card);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-card);
+  padding: 9px 16px;
+  transform: rotate(-0.4deg);
+}
+.search svg { width: 17px; height: 17px; flex: none; }
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+.search-arrow { font-family: var(--font-mono); font-weight: 700; }
+
+/* ─── 卡片 ─── */
+.cards {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.card {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 42px 44px 32px;
+  filter: drop-shadow(4px 5px 4px rgba(20, 20, 20, 0.16));
+}
+/* 卡壳=Elias F-01 撕纸图,四款按 variant 选 */
+.card-paper { background: url('assets/card_paper.webp') center / 100% 100% no-repeat; }
+.card-black { background: url('assets/card_black.webp') center / 100% 100% no-repeat; }
+.card-pink  { background: url('assets/card_pink.webp')  center / 100% 100% no-repeat; }
+.card-grid  { background: url('assets/card_grid.webp')  center / 100% 100% no-repeat; }
+.card:nth-child(odd) { transform: rotate(-0.35deg); }
+.card:nth-child(even) { transform: rotate(0.3deg); }
+
+.card-icon {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0;
+  box-shadow: 2px 3px 0 rgba(255, 45, 120, 0.5);
+}
+.card-icon img { width: 78%; height: 78%; object-fit: contain; }
+.card-body { flex: 1; min-width: 0; }
+.card-type {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--pink-deep);
+  margin-bottom: 6px;
+}
+.card-name {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+}
+.card-desc {
+  font-size: 13.5px;
+  line-height: 1.8;
+  letter-spacing: 0.4px;
+  margin-bottom: 16px;
+  white-space: pre-line;
+  max-width: 46em;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-right: 30px; /* 躲开卡壳右下角的泼墨脏边 */
+}
+.card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  border: 1.6px solid var(--ink);
+  padding: 4px 10px;
+  background: var(--paper-card);
+}
+.card-link {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.6px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2.5px solid var(--pink);
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.card-link:hover { color: var(--pink-deep); }
+
+/* 黑卡（gist）配色 */
+.card-black { color: #fff; }
+.card-black .card-icon { background: transparent; border: 2px solid var(--pink); color: var(--pink); box-shadow: none; }
+.card-black .card-type { color: var(--pink); }
+.card-black .chip { border-color: var(--pink); color: var(--pink-wash); background: transparent; }
+.card-black .card-link { color: #fff; }
+.card-black .card-link:hover { color: var(--pink-wash); }
+/* 粉卡（featured）配色 */
+.card-pink .card-icon { background: var(--ink); box-shadow: 2px 3px 0 rgba(255, 255, 255, 0.65); }
+.card-pink .card-type { color: var(--ink); }
+.card-pink .chip { background: rgba(247, 243, 234, 0.75); }
+
+.empty-hint {
+  font-family: var(--font-marker);
+  font-size: 22px;
+  text-align: center;
+  padding: 44px 0;
+  color: rgba(20, 20, 20, 0.55);
+  transform: rotate(-1.6deg);
+}
+
+/* ─── 页脚 ─── */
+.footer {
+  max-width: var(--w);
+  margin: 30px auto 0;
+  padding: 10px 24px 74px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+.footer-left { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.footer-trio { width: 250px; height: auto; }
+.still-building {
+  font-family: var(--font-script);
+  font-size: 42px;
+  line-height: 0.95;
+  transform: rotate(-5deg);
+  position: relative;
+  margin-left: 14px;
+}
+.scribble-star {
+  position: absolute;
+  right: -26px;
+  top: -12px;
+  color: var(--pink);
+  font-size: 22px;
+}
+.construction {
+  background: url('assets/construction_sheet.webp') center / 100% 100% no-repeat;
+  padding: 58px 30px 26px 40px;
+  transform: rotate(0.8deg);
+  position: relative;
+  filter: drop-shadow(3px 4px 3px rgba(20, 20, 20, 0.18));
+}
+.construction-label { display: none; } /* 表格纸自带「施工記録」标题 */
+.pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 20px);
+  gap: 3px;
+  margin-bottom: 8px;
+}
+.px {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: 1.4px solid rgba(20, 20, 20, 0.6);
+}
+.px-pink { color: var(--pink-deep); background: rgba(255, 45, 120, 0.12); }
+.px-ink { color: var(--ink); }
+.px-empty { border-color: rgba(20, 20, 20, 0.22); }
+.construction-note {
+  font-family: var(--font-script);
+  font-size: 17px;
+  line-height: 1.1;
+  color: rgba(20, 20, 20, 0.75);
+}
+.footer-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+/* 社交素材块:图上压透明热区(比例按 social_plate.webp 三圆位置) */
+.social-plate { position: relative; width: 250px; }
+.social-plate img { width: 100%; height: auto; display: block; }
+.hot {
+  position: absolute;
+  display: block;
+  top: 46%;
+  height: 28%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.hot-x { left: 18%; width: 20%; }
+.hot-gh { left: 42%; width: 20%; }
+.hot-mail { left: 64%; width: 20%; }
+.hot:hover { filter: drop-shadow(0 0 6px rgba(255, 45, 120, 0.7)); }
+
+/* ─── 贴纸点缀(跟卡走) + 涂鸦 toast ─── */
+.sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(2px 3px 2px rgba(20, 20, 20, 0.18));
+}
+.st-tr { top: -18px; right: 34px; }
+.st-br { bottom: -16px; right: 44px; }
+.st-bl { bottom: -18px; left: 52px; }
+.st-tl { top: -14px; left: 100px; }
+.st-peek { top: -44px; left: 56%; }  /* 探头猫趴卡顶 */
+.st-in.st-br { right: 150px; bottom: -8px; }  /* 内收位:躲开右下角链接 */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%) rotate(-2deg) scale(0.9);
+  background: url('assets/memo_pink.webp') center / 100% 100% no-repeat;
+  font-family: var(--font-script);
+  font-size: 21px;
+  padding: 30px 44px 34px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 99;
+  filter: drop-shadow(3px 4px 4px rgba(20, 20, 20, 0.25));
+}
+.toast.show { opacity: 1; transform: translateX(-50%) rotate(-2deg) scale(1); }
