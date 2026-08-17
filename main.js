@@ -128,6 +128,58 @@
   if (mailBtn) mailBtn.addEventListener('click', () => showToast(SOCIAL.mailToast));
   if (location.search.includes('toast=1')) showToast(SOCIAL.mailToast); // 调试:直接弹一次
 
+  // ── 计数区:PAGE VIEWS(CF Worker) + GITHUB STARS(GitHub API 直调) ──
+  const COUNTER_API = 'https://tilldusk-visits.kyoukyou0805.workers.dev';
+
+  function renderDigits(el, n, width) {
+    if (!el) return;
+    el.innerHTML = '';
+    for (const d of String(n).padStart(width, '0').slice(-width)) {
+      const s = document.createElement('span');
+      s.textContent = d;
+      el.appendChild(s);
+    }
+  }
+
+  // 访问计数:Worker /hit;失败回落 localStorage(只计本机,凑合显示不留空窗)
+  (async function pageViews() {
+    const el = document.getElementById('vc-digits');
+    if (!el) return;
+    try {
+      const r = await fetch(COUNTER_API + '/hit');
+      const { n } = await r.json();
+      renderDigits(el, n, 6);
+    } catch (e) {
+      const KEY = 'td_visits';
+      const n = (parseInt(localStorage.getItem(KEY), 10) || 0) + 1;
+      localStorage.setItem(KEY, String(n));
+      renderDigits(el, n, 6);
+    }
+  })();
+
+  // star 总和:前端直调 GitHub API(访客自己 IP,限流无忧;CF Worker 出口 IP 匿名调必 403)
+  // sessionStorage 缓存 1h,失败时用旧缓存兜底。
+  (async function ghStars() {
+    const el = document.getElementById('vc-stars');
+    if (!el) return;
+    const KEY = 'td_stars';
+    const cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    renderDigits(el, cached ? cached.n : 0, 7); // 先垫占位,慢网/失败不留空窗
+    if (cached && Date.now() - cached.t < 3600e3) return;
+    try {
+      const r = await fetch('https://api.github.com/users/tsuru0805/repos?per_page=100&type=owner', {
+        headers: { Accept: 'application/vnd.github+json' },
+      });
+      if (!r.ok) throw new Error('gh ' + r.status);
+      const repos = await r.json();
+      const n = repos.reduce((s, x) => s + (x.stargazers_count || 0), 0);
+      sessionStorage.setItem(KEY, JSON.stringify({ n, t: Date.now() }));
+      renderDigits(el, n, 7);
+    } catch (e) {
+      if (!cached) renderDigits(el, 0, 7);
+    }
+  })();
+
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       tabs.forEach((t) => t.classList.remove('active'));

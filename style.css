@@ -66,15 +66,15 @@ body {
 .topbar-heart { width: 26px; height: 26px; }
 .topbar-heart svg { width: 100%; height: 100%; display: block; }
 
-/* ─── hero ─── */
+/* ─── hero(0817 换小晚立绘:立绘加大占右,版式=她效果图) ─── */
 .hero {
   position: relative;
   max-width: var(--w);
   margin: 0 auto;
-  padding: 56px 24px 30px;
+  padding: 34px 24px 8px;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 12px;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 6px;
   align-items: center;
 }
 .hero-title { margin: 0 0 4px -10px; }
@@ -101,11 +101,14 @@ body {
   letter-spacing: 0.5px;
 }
 
-.hero-art { position: relative; text-align: center; }
+.hero-art { position: relative; text-align: center; z-index: 3; }
 .hero-art img {
-  max-width: 100%;
+  width: 152%;
+  max-width: none;
   height: auto;
   display: block;
+  margin: -30px 0 -58px -18%;  /* 底边下探压到 filterbar,脚踩搜索行,不留悬空切面 */
+  pointer-events: none;
 }
 .hero-art .art-placeholder { display: none; }
 .hero-art.missing img { display: none; }
@@ -137,25 +140,30 @@ body {
   filter: drop-shadow(3px 4px 3px rgba(20, 20, 20, 0.18));
 }
 .sticky-left {
-  left: 18px;
-  bottom: -128px;
+  position: static;
+  display: inline-block;
+  margin-top: 26px;
   transform: rotate(-4deg);
   z-index: 2;
   background: url('assets/memo_cream.webp') center / 100% 100% no-repeat;
   padding: 30px 34px 34px;
 }
 .sticky-right {
-  right: -6px;
-  bottom: 8px;
+  right: -18px;
+  bottom: -34px;
   transform: rotate(3deg);
   background: url('assets/memo_pink.webp') center / 100% 100% no-repeat;
   padding: 26px 34px 30px;
+  z-index: 2;
 }
-.sticky-foot {
-  position: static;
+.sticky-head {
+  top: 6px;
+  left: 40%;
   transform: rotate(-2deg);
   background: url('assets/memo_fold.webp') center / 100% 100% no-repeat;
-  padding: 30px 40px 34px;
+  padding: 26px 36px 30px;
+  font-size: 16px;
+  z-index: 2;
 }
 .tiny-heart { color: var(--pink); }
 
@@ -183,8 +191,10 @@ body {
 
 /* ─── 过滤条 ─── */
 .filterbar {
+  position: relative;
+  z-index: 4;  /* 搜索行在立绘脚上层,交互不被图挡 */
   max-width: var(--w);
-  margin: 130px auto 26px;
+  margin: 8px auto 26px;
   padding: 0 24px;
   display: flex;
   align-items: center;
@@ -353,11 +363,41 @@ body {
   transform: rotate(-1.6deg);
 }
 
+/* ─── 计数区(壳=Elias v2 双面板;数字=笨蛋扣同款 ZCOOL KuaiLe) ─── */
+.visit-counter {
+  max-width: var(--w);
+  margin: 30px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+}
+.vc-panel { position: relative; }
+.vc-panel img { width: 100%; height: auto; display: block; }
+.vc-views { width: 360px; }
+.vc-stars { width: 372px; }
+/* 数字覆盖层:对准各壳白窗(按件内比例定位) */
+.vc-digits { position: absolute; display: flex; }
+/* 窗位=纯窗带像素实测(排除下方纸条):每格中心正对窗心 */
+.vc-views .vc-digits { left: 28.1%; right: 17%; top: 44.7%; height: 11.1%; }
+.vc-stars .vc-digits { left: 18.5%; right: 21.4%; top: 51.8%; height: 9.4%; }
+.vc-stars .vc-digits span { font-size: 23px; }
+.vc-digits span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'ZCOOL KuaiLe', var(--font-body);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ink);
+}
+
 /* ─── 页脚 ─── */
 .footer {
   max-width: var(--w);
-  margin: 30px auto 0;
-  padding: 10px 24px 74px;
+  margin: 6px auto 0;
+  padding: 0 24px 60px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

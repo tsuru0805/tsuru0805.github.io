@@ -8,8 +8,8 @@
 <meta name="description" content="projects, notes and experiments from TillDusk.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Mono:wght@400;700&family=Caveat:wght@600&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -35,11 +35,12 @@
     <div class="sticky sticky-left" aria-hidden="true">code.<br>caffeine.<br>chaos.<br>cute girls. <span class="tiny-heart">♡</span></div>
   </div>
   <figure class="hero-art" id="art">
-    <img src="assets/hero.webp?v=2" alt="TillDusk 主视觉：粉发小恶魔与贴纸笔电"
+    <img src="assets/hero_wan.webp?v=1" alt="TillDusk 主视觉：小晚——粉发小恶魔抱着贴纸笔电"
          onerror="this.closest('.hero-art').classList.add('missing')">
     <figcaption class="art-placeholder" aria-hidden="true">Elias 素材位<br><code>assets/hero.png</code></figcaption>
     <div class="sticky sticky-right" aria-hidden="true">works on<br>my machine<br>(mostly)</div>
   </figure>
+  <div class="sticky sticky-head" aria-hidden="true">made with<br>bugs, caffeine &amp;<br>unreasonable<br>persistence. <span class="tiny-heart">♥</span></div>
   <!-- 喷漆占位：素材 C 到位后换 PNG -->
   <span class="splat splat-1" aria-hidden="true"></span>
   <span class="splat splat-2" aria-hidden="true"></span>
@@ -63,6 +64,18 @@
 <main id="cards" class="cards"></main>
 <!-- 锚点用于跳转:#art=主视觉 #cards=列表 #foot=页脚 -->
 
+<!-- ▓ 计数区(壳=Elias v2 双面板;数字=笨蛋扣同款 ZCOOL KuaiLe;后端=CF Worker tilldusk-visits) -->
+<section class="visit-counter" aria-label="访客计数与 star 数">
+  <div class="vc-panel vc-views">
+    <img src="assets/counter_views.webp?v=1" alt="PAGE VIEWS 访客计数器">
+    <span id="vc-digits" class="vc-digits"></span>
+  </div>
+  <div class="vc-panel vc-stars">
+    <img src="assets/counter_stars.webp?v=1" alt="GITHUB STARS 收藏总数">
+    <span id="vc-stars" class="vc-digits"></span>
+  </div>
+</section>
+
 <!-- ▓ 页脚 -->
 <footer class="footer" id="foot">
   <div class="footer-left">
@@ -75,7 +88,6 @@
     <div class="construction-note">slow but steady.<br>(and full of bugs)</div>
   </div>
   <div class="footer-right">
-    <div class="sticky sticky-foot" aria-hidden="true">made with<br>bugs, caffeine &amp;<br>unreasonable<br>persistence. <span class="tiny-heart">♥</span></div>
     <!-- 社交素材块(Elias F sheet):热区压在三个圆图标上 -->
     <div class="social-plate">
       <img src="assets/social_plate.webp" alt="TillDusk 社交入口">
@@ -86,7 +98,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=4"></script>
-<script src="main.js?v=4"></script>
+<script src="data.js?v=5"></script>
+<script src="main.js?v=8"></script>
 </body>
 </html>
