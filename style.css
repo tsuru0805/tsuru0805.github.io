@@ -77,6 +77,8 @@ body {
   gap: 6px;
   align-items: center;
 }
+.hero-copy { position: relative; z-index: 2; pointer-events: none; }
+.hero-copy a, .hero-copy button { pointer-events: auto; }
 .hero-title { margin: 0 0 4px -10px; }
 .hero-title img {
   display: block;
@@ -107,7 +109,9 @@ body {
   max-width: none;
   height: auto;
   display: block;
-  margin: -30px 0 -58px -18%;  /* 底边下探压到 filterbar,脚踩搜索行,不留悬空切面 */
+  /* 右缘锁死列右缘(-52%=152-100 全部向左溢):左溢不撑页宽,页面实际宽度=880,
+     手机初始缩放才对得上、topbar 才能顶满两边(0818 她真机抓的整页偏左病根) */
+  margin: -30px 0 -58px -52%;
   pointer-events: none;
 }
 .hero-art .art-placeholder { display: none; }
