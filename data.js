@@ -75,6 +75,16 @@ const PROJECTS = [
   },
   {
     type: 'note',
+    variant: 'black',
+    iconImg: 'assets/st/cat_peek.webp',
+    name: 'StackChan 搭建手记',
+    desc: '给 agent 读的接入手记：刷机、配桥、语音、带出门，真机踩坑全记录。',
+    tags: ['STACKCHAN', 'GUIDE', 'AGENT'],
+    link: 'stackchan-guide.html',
+    linkLabel: 'READ',
+  },
+  {
+    type: 'note',
     variant: 'paper',
     iconImg: 'assets/st/icon_wing.webp',
     name: 'API 到 Claude Code 迁移教程',
