@@ -107,8 +107,6 @@
   }
 
   // ── 页脚社交素材块:热区 + 涂鸦便签 toast ──
-  const xLink = document.querySelector('.hot-x');
-  if (xLink) xLink.href = SOCIAL.x;
   const mailBtn = document.querySelector('.hot-mail');
   let toastTimer = null;
   function showToast(msg) {

@@ -471,7 +471,6 @@ body {
   cursor: pointer;
   padding: 0;
 }
-.hot-x { left: 18%; width: 20%; }
 .hot-gh { left: 42%; width: 20%; }
 .hot-mail { left: 64%; width: 20%; }
 .hot:hover { filter: drop-shadow(0 0 6px rgba(255, 45, 120, 0.7)); }

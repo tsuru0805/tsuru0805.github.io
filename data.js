@@ -133,9 +133,8 @@ const STICKERS = {
 
 };
 
-// 社交链接(页脚素材块热区)。推特 handle 候晚晚给,先占位。
+// 社交链接(页脚素材块热区)。X 图标为纯摆设无链接(2026-08-29 撤)。
 const SOCIAL = {
-  x: 'https://x.com/tilldusk0315',
   github: 'https://github.com/tsuru0805',
   mailToast: '邮箱待定中...🚧',
 };
