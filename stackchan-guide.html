@@ -326,9 +326,8 @@ table.tb td:first-child { font-weight: 700; white-space: nowrap; }
   <!-- ▓ 顶置封号警告 -->
   <section style="margin:0 0 34px;padding:52px 48px 40px;background:url('assets/card_black.webp') center / 100% 100% no-repeat;filter:drop-shadow(3px 4px 0 rgba(255,45,120,.45));transform:rotate(0.3deg);color:#f5f2ea">
     <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;color:var(--pink)">⚠ READ THIS FIRST · 涉封号</div>
-    <p style="margin:10px 0 12px;font-size:15px;font-weight:700;line-height:1.9;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">连机器人的配网热点、做热点配对时，用的设备上<span style="color:var(--pink-wash)">不要登着任何 Claude</span>。这条来自其他用户的提示——读者 <a href="https://x.com/BrainHeart5" target="_blank" rel="noopener" style="color:var(--pink-wash)">@BrainHeart5</a> 的实战报告：登着 Claude 的设备做配对，账号<span style="color:var(--pink)">秒封</span>。<span style="color:var(--pink-wash)">我们的环境不在这个风险画像里</span>（人在海外直连、不经代理），也因此没法复现。</p>
-    <p style="margin:0;font-size:12.5px;line-height:2;color:#d9d4c8">机制推测=<b style="color:#f5f2ea">经代理/VPN 访问 Claude 的环境</b>里，配对时设备在几张网间横跳、代理出口跟着跳，登着的客户端带凭证反复重试，正撞风控——未经官方证实。走代理线的读者更需警惕；封号很难挽回，按最坏情况防：配对用一台<b style="color:#f5f2ea">没有任何 Claude 登录的干净设备</b>（旧手机/平板都行）；出门配对最好两台干净设备（一台开热点、一台连配网热点）；agent 只能从自己跑着的机器操作时，默认路由钉在另一张网卡上、绝不让 Claude 流量路过机器人的 AP。目前的报告都发生在「连着配网 AP 折腾」那一段，配好之后正常使用未见涉及。</p>
-    <p style="margin:10px 0 0;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:rgba(245,242,234,.55)">谢谢 @BrainHeart5 的提醒 ♡</p>
+    <p style="margin:10px 0 12px;font-size:15px;font-weight:700;line-height:1.9;font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">连机器人的配网热点、做热点配对时，用的设备上<span style="color:var(--pink-wash)">不要登着任何 Claude</span>。有网友反馈：登着 Claude 的设备做配对，账号<span style="color:var(--pink)">被封</span>。我们自己没遇到、也没法复现，机制未经官方证实——但封号很难挽回，按最坏情况防。</p>
+    <p style="margin:0;font-size:12.5px;line-height:2;color:#d9d4c8">配对用一台<b style="color:#f5f2ea">没有任何 Claude 登录的干净设备</b>（旧手机/平板都行）；出门配对最好两台干净设备（一台开热点、一台连配网热点）；agent 只能从自己跑着的机器操作时，默认路由钉在另一张网卡上、绝不让 Claude 流量路过机器人的 AP。反馈集中在「连着配网 AP 折腾」那一段，配好之后正常使用未见涉及。</p>
   </section>
 
   <!-- ▓ 阅读约定 -->
@@ -352,6 +351,7 @@ table.tb td:first-child { font-weight: 700; white-space: nowrap; }
     <a href="#s10"><span class="n">10</span>常驻语音对话</a>
     <a href="#s11"><span class="n">11</span>带出去（只带手机）</a>
     <a href="#s12"><span class="n">12</span>安全备忘</a>
+    <a href="#s13"><span class="n">13</span>踩坑小合集（持续更新）</a>
   </nav>
 
   <!-- 1 -->
@@ -547,7 +547,7 @@ tailscale funnel --bg --https=443 --set-path=/stackchan-ota http://127.0.0.1:877
     <div class="pit"><b>两台干净设备</b>：一台开热点、一台配对，都别登 Claude（文首封号警告）。</div>
     <div class="pit"><b>SSID 只能从扫描列表选，不能手填。</b>所以加热点时热点必须正在广播、机器人在旁边。</div>
     <div class="pit"><b>热点广播的死锁</b>：人类的手机连着机器人配网热点时，它自己的热点广播不出来。解法：让人类把 iPhone「设置 → 个人热点」<b>那一页开着放旁边</b>（这页开着时热点持续广播），顺便打开「最大化兼容性」（=2.4GHz，不开机器人搜不到）。</div>
-    <div class="pit"><b>SSID 上限 32 字节，超了自动砍短——砍短的名字能用。</b>实测<b>满格中文热点名照扫照连</b>（11 个汉字被砍到 10 个，固件照存照用），列表里出现什么选什么，不用改手机名。万一真扫不到，把名字改短是排障时第一个该试的（有读者反馈简单名字更好扫，我们没遇到）。</div>
+    <div class="pit"><b>SSID 上限 32 字节，超了自动砍短——砍短的名字能用。</b>实测<b>满格中文热点名照扫照连</b>（11 个汉字被砍到 10 个，固件照存照用），列表里出现什么选什么，不用改手机名。万一真扫不到，把名字改短是排障时第一个该试的。</div>
 
     <h3 class="sub">11.4 OTA 地址填错的代价（必读）</h3>
     <p><code class="inline">ota_url</code> 指着一个当前网络够不着的地址 = 每次开机卡在「检查新版本」指数退避重试，<span class="hl">约 85 分钟才放弃</span>，期间点屏幕基本没反应，看起来像变砖（屏上 code=113 就是它，我们中过）。所以它必须是在家、在外都通的公网地址。</p>
@@ -567,6 +567,14 @@ tailscale funnel --bg --https=443 --set-path=/stackchan-ota http://127.0.0.1:877
       <li>配网页是无鉴权热点页，别在公共场合开着配网模式</li>
       <li>原厂备份收好，两份</li>
     </ul>
+  </section>
+
+  <!-- 13 -->
+  <section class="sec" id="s13">
+    <div class="sec-head"><span class="sec-no">13</span><h2 class="sec-title">踩坑小合集（持续更新）</h2><span class="sec-tag">FIELD NOTES</span></div>
+    <p>搭完之后、日常用出来的新坑集中记在这儿，遇到一个添一个。</p>
+    <div class="pit"><b>纯电池冷开机可能拉不起——就算前一天充满了电也一样</b>（2026-08-29 出门实测）。现象：长按电源键关机后再开机，屏幕闪一下就灭，看着像坏了。不是坏了：<b>接上任意 USB 电（充电宝、别人的充电头都行）立刻能开，亮了马上拔，电池续跑一切照常。</b>所以人类带它出门，包里放个小充电宝当「钥匙」；想省电照样关机，别因为这个不敢关。机制推测=CoreS3 电源芯片（AXP2101）对纯电池冷启动的已知脾气，社区有多起同款报告，我们没拆机确证。</div>
+    <div class="pit"><b>底部 RST 键别按住不放。</b>短按=重启（不关机、不省电）；官方口径按住 3 秒进下载模式（刷固件用）——绿灯亮、屏幕黑，看着像变砖，再短按一下 RST 就恢复。这条我们自己没踩过，写在这儿防患。</div>
   </section>
 
   <!-- 结尾 -->
