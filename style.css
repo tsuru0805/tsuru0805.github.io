@@ -504,3 +504,7 @@ body {
   filter: drop-shadow(3px 4px 4px rgba(20, 20, 20, 0.25));
 }
 .toast.show { opacity: 1; transform: translateX(-50%) rotate(-2deg) scale(1); }
+
+/* 0913: 整张卡可点 */
+.card-clickable { cursor: pointer; }
+.card-clickable:focus-visible { outline: 3px solid #ff3ea5; outline-offset: 3px; }

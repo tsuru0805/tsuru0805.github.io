@@ -94,6 +94,26 @@
     body.appendChild(metaEl);
     card.appendChild(iconBox);
     card.appendChild(body);
+
+    // 整张卡可点(0913 晚晚:右下角那行小字好多人找不到)。角落那行 → 链接留着当提示;
+    // 点在链接本身、正在选字、按住修饰键(想开新标签)都交给浏览器默认行为。
+    if (p.link) {
+      card.classList.add('card-clickable');
+      card.tabIndex = 0;
+      card.setAttribute('role', 'link');
+      card.setAttribute('aria-label', `${p.name} → ${p.linkLabel}`);
+      const go = (ev) => {
+        if (ev.target.closest('a')) return;
+        if (window.getSelection && String(window.getSelection()).length) return;
+        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+        if (p.link.startsWith('http')) window.open(p.link, '_blank', 'noopener');
+        else window.location.href = p.link;
+      };
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(ev); }
+      });
+    }
     (STICKERS[p.name] || []).forEach((s) => {
       const img = document.createElement('img');
       img.className = `sticker ${s.cls}`;
