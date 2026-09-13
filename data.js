@@ -5,6 +5,16 @@
 const PROJECTS = [
   {
     type: 'project',
+    variant: 'pink',
+    iconImg: 'assets/st/pin.webp',
+    name: 'lorecards-mcp',
+    desc: '给陪伴型 AI 的卡片世界书：提过的人和事各一张卡，网关每轮自动注入、按会话去重，带本地编辑器。',
+    tags: ['LOREBOOK', 'GATEWAY', 'MCP'],
+    link: 'https://github.com/tsuru0805/lorecards-mcp',
+    linkLabel: 'GITHUB',
+  },
+  {
+    type: 'project',
     variant: 'paper',
     iconImg: 'assets/st/starburst.webp',
     name: 'engawa-mcp',
