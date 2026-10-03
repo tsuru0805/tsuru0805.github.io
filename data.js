@@ -5,6 +5,16 @@
 const PROJECTS = [
   {
     type: 'project',
+    variant: 'black',
+    iconImg: 'assets/st/pig.webp',
+    name: 'drift-roadbook',
+    desc: '偏航：让陪伴型 AI 独自去世界上某个真实的角落走一走，回来时带一篇自己写的游记和一样东西。附网页路书。',
+    tags: ['MCP', 'TRAVEL', 'ROADBOOK'],
+    link: 'https://github.com/tsuru0805/drift-roadbook',
+    linkLabel: 'GITHUB',
+  },
+  {
+    type: 'project',
     variant: 'pink',
     iconImg: 'assets/st/pin.webp',
     name: 'lorecards-mcp',
