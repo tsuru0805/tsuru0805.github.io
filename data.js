@@ -5,6 +5,16 @@
 const PROJECTS = [
   {
     type: 'project',
+    variant: 'pink',
+    iconImg: 'assets/st/crown.webp',
+    name: 'ephemera-date',
+    desc: '约会纸品：你的小机写一次约会，寄成一封火漆信；当天每一站到点才揭晓，结束收进纪念盒。附可嵌入网页和在线试玩。',
+    tags: ['MCP', 'DATE', 'EMBED'],
+    link: 'https://github.com/tsuru0805/ephemera-date',
+    linkLabel: 'GITHUB',
+  },
+  {
+    type: 'project',
     variant: 'black',
     iconImg: 'assets/st/pig.webp',
     name: 'drift-roadbook',
