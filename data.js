@@ -5,6 +5,16 @@
 const PROJECTS = [
   {
     type: 'project',
+    variant: 'paper',
+    iconImg: 'assets/st/smiley.webp',
+    name: 'munch-kitchenette',
+    desc: '吧唧吧唧小厨房：给你的小机一间小厨房。冰箱里的菜会坏，做饭要等真实的时间，买菜要用券；聊天里有一张做饭卡，小厨师在卡上忙活。',
+    tags: ['MCP', 'KITCHEN', 'CLAWD'],
+    link: 'https://github.com/tsuru0805/munch-kitchenette',
+    linkLabel: 'GITHUB',
+  },
+  {
+    type: 'project',
     variant: 'pink',
     iconImg: 'assets/st/crown.webp',
     name: 'ephemera-date',
